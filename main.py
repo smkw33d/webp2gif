@@ -164,8 +164,8 @@ class ConversionWorker(QThread):
                         converted = False
                         if has_ffmpeg:
                             self.log(f"使用ffmpeg转换文件: {file_basename}", 'info')
-                            cmd = ['ffmpeg', '-i', file, '-vf', 'split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse', '-y', output_path]
-                            
+                            # cmd = ['ffmpeg', '-i', file, '-vf', 'split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse', '-y', output_path]
+                            cmd = ['ffmpeg', '-i', file, output_path]                            
                             try:
                                 self.log(f"执行命令: {' '.join(cmd)}", 'debug')
                                 process = subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
